@@ -40,7 +40,7 @@
             ->getColorPalette()
             ->removeColors($image->getBackgroundPalette())
             ->sortByWeightDesc()
-            ->combineSimilarities(false, 0.15)
+            ->combineSimilarities(true, 0.15)
             ->sortByWeightDesc()
             ->limitColorCount()
             ->writeToJPEGFile($file['output'].'-3-palette', $DIR_output);
