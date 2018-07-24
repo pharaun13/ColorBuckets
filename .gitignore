@@ -1,2 +1,3 @@
 .directory
 composer.lock
+output/*
