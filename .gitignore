@@ -1,3 +1,4 @@
 .directory
 composer.lock
 output/*
+!output/.gitkeep
