@@ -1,0 +1,13 @@
+{
+	"name": "pharaun/colorbuckets",
+	"license": "proprietary",
+	"description": "Color bucketing tool for dominant color detection.",
+	"require": {
+		"php": ">=7.2"
+	},
+	"autoload": {
+		"psr-4": {
+			"Pharaun\\ColorBuckets\\": "src/"
+		}
+	}
+}
