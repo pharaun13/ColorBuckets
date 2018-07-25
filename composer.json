@@ -3,7 +3,8 @@
 	"license": "proprietary",
 	"description": "Color bucketing tool for dominant color detection.",
 	"require": {
-		"php": ">=7.2"
+		"php": ">=7.2",
+		"ext-imagick": ">=3.4"
 	},
 	"autoload": {
 		"psr-4": {
