@@ -48,6 +48,17 @@ class Image {
     /* ------------------------------------ Class Methods START ---------------------------------------- */
 
     /**
+     * Resize and crop current image to the size of 250x250 - it's far less costly to do this and analyze the thumbnail instead of
+     * analyzing a large image pixel by pixel.
+     * 
+     * @return \Pharaun\ColorBuckets\Entity\Image\Image
+     */
+    public function resizeAndCrop(): \Pharaun\ColorBuckets\Entity\Image\Image {
+        $this->image->thumbnailImage(250, 250, true, true);
+        return $this;
+    }
+    
+    /**
      * Reduce the number of colors in the image to the maximum of $max_color_count. 
      * 
      * @param int $max_color_count
