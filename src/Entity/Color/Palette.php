@@ -156,7 +156,7 @@ class Palette implements \Countable, \Iterator {
         }
         
         // add ext if necessary
-        preg_match('/\.jpg$/', $filename) === false or $filename .= '.jpg';
+        preg_match('/\.jpg$/', $filename) === 0 and $filename .= '.jpg';
         
         // get colors as imagick objects
         $colors = [];
