@@ -58,7 +58,29 @@ class Color {
     }
     
     /* ------------------------------------ Magic methods END ------------------------------------------ */
+    
+    /* ------------------------------------ Static Methods START --------------------------------------- */
 
+    /**
+     * Build a new color object based on a hex string.
+     * 
+     * @param string $hex
+     * @return \Pharaun\ColorBuckets\Entity\Color\Color
+     */
+    static public function fromHex(string $hex): \Pharaun\ColorBuckets\Entity\Color\Color {
+        if (!mb_strlen($hex) === 6) {
+            throw new \InvalidArgumentException('Full hex value (6 bytes) must be provided. '.__METHOD__);
+        }
+
+        return new \Pharaun\ColorBuckets\Entity\Color\Color(
+            hexdec($hex[0].$hex[1]),
+            hexdec($hex[2].$hex[3]),
+            hexdec($hex[4].$hex[5])
+        );
+    }
+    
+    /* ------------------------------------ Static Methods END ----------------------------------------- */
+    
     /* ------------------------------------ Class Methods START ---------------------------------------- */
 
     /**
@@ -105,6 +127,19 @@ class Color {
         mb_strlen($hexB) === 1 and $hexB = '0'.$hexB;
         
         return $hexR.$hexG.$hexB;
+    }
+    
+    /**
+     * Fetch this color as an array of RGB channel values.
+     * 
+     * @return array
+     */
+    public function getColorAsRGBArray(): array {
+        return [
+            $this->getRed(),
+            $this->getGreen(),
+            $this->getBlue()
+        ];
     }
     
     /* ------------------------------------ Class Methods END ------------------------------------------ */

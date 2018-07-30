@@ -29,6 +29,7 @@
     echo "Files to process: [".count($files)."]".\PHP_EOL;
     $index = 0;
 
+    $normalizer = new \Pharaun\ColorBuckets\Normalization\Color\Set();
     foreach ($files as $file ) {
         $image = new \Pharaun\ColorBuckets\Entity\Image\Image($DIR_input.DIRECTORY_SEPARATOR.$file['input']);
         $image
@@ -45,6 +46,15 @@
             ->limitColorCount()
             ->writeToJPEGFile($file['output'].'-3-palette', $DIR_output);
 
+        $mapped_palette = new \Pharaun\ColorBuckets\Entity\Color\Palette();
+        foreach ($palette as $pal_col) {
+            try {
+                $mapped_palette->addColor($normalizer->mapColor($pal_col, true));
+            } catch (\InvalidArgumentException $e) {}
+        }
+
+        $mapped_palette->writeToJPEGFile($file['output'].'-4-mapped-palette', $DIR_output);
+        
         echo ".";
         $index++;
         if ($index % $CON_line === 0) echo '['.$index.'/'.count($files).']'.\PHP_EOL;
