@@ -81,21 +81,30 @@ class Color {
     }
     
     /**
-     * Fetvch this color as a corresponding integer value
+     * Fetch this color as a corresponding integer value.
      * 
      * @return int
      */
     public function getColorAsInteger(): int {
+        return hexdec($this->getColorAsHex());
+    }
+    
+    /**
+     * Fetch this color definitions as an RGB hex value.
+     * 
+     * @return string
+     */
+    public function getColorAsHex(): string {
         $hexR = dechex($this->getRed());
         mb_strlen($hexR) === 1 and $hexR = '0'.$hexR;
-        
+
         $hexG = dechex($this->getGreen());
         mb_strlen($hexG) === 1 and $hexG = '0'.$hexG;
-        
+
         $hexB = dechex($this->getBlue());
         mb_strlen($hexB) === 1 and $hexB = '0'.$hexB;
-
-        return hexdec($hexR.$hexG.$hexB);
+        
+        return $hexR.$hexG.$hexB;
     }
     
     /* ------------------------------------ Class Methods END ------------------------------------------ */
