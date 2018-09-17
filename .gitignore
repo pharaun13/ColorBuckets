@@ -2,3 +2,4 @@
 composer.lock
 output/*
 !output/.gitkeep
+vendor
